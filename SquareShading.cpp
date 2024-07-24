@@ -80,10 +80,10 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT);
 
         LightingShader.use();
-        LightingShader.setVec3("direction", 1.0f, -1.0f, -1.0f);
+        LightingShader.setVec3("direction",0.0f, 0.0f, -1.0f);
         LightingShader.setVec3("viewPos", CameraPos);
         LightingShader.setFloat("shininess", 32.0f);
-        LightingShader.setVec3("lightColor", 0.3f, 0.3f, 0.3f);
+        LightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
         LightingShader.setFloat("ambientStrength", 0.1f);
 
         glm::mat4 ProjectionMat = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
