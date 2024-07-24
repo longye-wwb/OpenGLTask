@@ -38,11 +38,11 @@ int main()
     Shader LightingShader("directionLight.vs", "directionLight.fs");
 
     float Vertices[] = {
-        //顶点              颜色             法线
-        0.5f,  0.5f, 0.0f,  1.0f,0.0f,0.0f, 0.0f,0.0f,1.0f,
-         0.5f, -0.5f, 0.0f, 0.0f,1.0f,0.0f,0.0f,0.0f,1.0f,
-        -0.5f, -0.5f, 0.0f,0.0f,0.0f,1.0f,0.0f,0.0f,1.0f,
-        -0.5f,  0.5f, 0.0f ,0.0f,0.0f,0.0f,0.0f,0.0f,1.0f,
+        //Verices              Color             Normal
+         0.5f, 0.5f, 0.0f,  1.0f,0.0f,0.0f,  0.0f,0.0f,1.0f,
+         0.5f,-0.5f, 0.0f,  0.0f,1.0f,0.0f,  0.0f,0.0f,1.0f,
+        -0.5f,-0.5f, 0.0f,  0.0f,0.0f,1.0f,  0.0f,0.0f,1.0f,
+        -0.5f, 0.5f, 0.0f,  1.0f,1.0f,0.0f,  0.0f,0.0f,1.0f,
     };
     unsigned int Indices[] = {
         0, 1, 3,
@@ -80,11 +80,9 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT);
 
         LightingShader.use();
-        LightingShader.setVec3("direction",0.0f, 0.0f, -1.0f);
-        LightingShader.setVec3("viewPos", CameraPos);
-        LightingShader.setFloat("shininess", 32.0f);
-        LightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        LightingShader.setFloat("ambientStrength", 0.1f);
+        LightingShader.setVec3("uViewPos", CameraPos);
+        LightingShader.setFloat("uShininess", 32.0f);
+        LightingShader.setFloat("uAmbientStrength", 0.1f);
 
         glm::mat4 ProjectionMat = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
         glm::mat4 ViewMat = glm::lookAt(CameraPos, CameraPos + Front, Up);
